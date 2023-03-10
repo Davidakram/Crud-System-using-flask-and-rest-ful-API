@@ -1,0 +1,30 @@
+{% macro Products(list) %}
+{% for pro in list%}
+<div class="col-sm-3">
+    <div class="card text-bg-dark mb-3" style="max-width: 18rem; height:55vh">
+        <div class="card-body">
+            <img src="{{url_for('static', filename='images/tv2.jpg' )}}" class="card-img-top" alt="...">
+
+          <h5 class="card-title text-warning">Title: {{pro.title}}</h5>
+          <p class="card-text text-warning" style="height:vh">Body : {{pro.body}}</p>
+           <div class="row">
+            <div class="col-sm-4">
+                <a href="{{ url_for('one_product',id=pro.id) }}"><button type="button" class="btn btn-info">Details</button>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ url_for('edit',id=pro.id) }}"><button type="button" class="btn btn-warning">Edit</button>
+                </a>
+            </div>
+        
+            <div class="col-sm-4">
+                <a href="{{url_for('delete',id=pro.id)}}"><button type="button" class="btn btn-danger">delete</button>
+                </a>
+            </div>
+          </div> 
+         
+        </div>
+    </div>
+</div>
+{%  endfor %}
+{% endmacro %}
